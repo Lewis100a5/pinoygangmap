@@ -1,0 +1,65 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Palomino Plantation",
+        "imgname":"images/race/stuntplane.jpg",
+        "ptype": "Race"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5591, 2195]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fort Zancudo Plantation",
+        "imgname":"images/race/ratoncanyon.jpg",
+        "ptype": "Race"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1780, 4900]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bayview Plantation",
+        "imgname":"images/race/ratoncanyon.jpg",
+        "ptype": "Race"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3880, 7280]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sealabs Plantation",
+        "imgname":"images/race/ratoncanyon.jpg",
+        "ptype": "Race"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6260, 5610]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chiliad Plantation",
+        "imgname":"images/race/ratoncanyon.jpg",
+        "ptype": "Race"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3050, 5930]
+      }
+    }
+  ]
+}
