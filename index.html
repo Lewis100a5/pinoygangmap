@@ -91,8 +91,27 @@
     var road = L.imageOverlay('images/GTAV_ROADMAP_8192x8192.png', bounds)
     map.fitBounds(bounds);
     map.setMaxBounds(bounds)
-
+  
     // Load each layer from it's corresponding GeoJSON file
+    var chops = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/repairshop.png',
+          iconSize: [48, 48],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/chops.json", function(data) {
+      chops.addData(data);
+    });
+
     var hideout = L.geoJson(null, {
       pointToLayer: function(feature, latlng) {
         //Create icon for marker
@@ -104,7 +123,7 @@
           icon: icn
         });
         marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
-        marker.bindTooltip('Hideout', {sticky: true, direction: 'top'});
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
         return marker;
       }
     })
@@ -190,7 +209,8 @@
       "<img src='icons/garage.png'align='center'width='30' height='30'/> Gang HQ": ganghq,
       "<img src='icons/triathalon.png'align='center'width='30' height='30'/> Plantations": plantations,
       "<img src='icons/triathalon.png'align='center'width='30' height='30'/> zones": zones,
-      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> Locations": generallocations
+      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> Locations": generallocations,
+      "<img src='icons/repairshop.png'align='center'width='30' height='30'/> Chop Shops": chops
     };
     //Create titles for each baselayer to add to the Control
     var baseLayers = {

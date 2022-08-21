@@ -4,7 +4,7 @@
       {
         "type": "Feature",
         "properties": {
-          "name": "Los Santos Golf Club",
+          "name": "Hideout",
           "imgname":"images/golf/golf.jpg",
           "ptype": "Golf"
         },

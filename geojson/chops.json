@@ -4,25 +4,25 @@
       {
         "type": "Feature",
         "properties": {
-          "name": "Jamestown",
+          "name": "DCC Chop",
           "imgname":"images/race/stuntplane.jpg",
           "ptype": "Race"
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [4000, 1450]
+          "coordinates": [4130, 2380]
         }
       },
       {
         "type": "Feature",
         "properties": {
-          "name": "Scrapyard",
+          "name": "Chili Chop",
           "imgname":"images/race/ratoncanyon.jpg",
           "ptype": "Race"
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [3395, 1550]
+          "coordinates": [3000, 5930]
         }
     }
     ]
