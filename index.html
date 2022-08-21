@@ -4,9 +4,23 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="60x60" href="./pgicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./pgicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./pgicon.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#000000">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-config" content="./browserconfig.xml">
+  <meta name="theme-color" content="#000000">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="assets/css/leaflet.css" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css?nocache=1544" />
+  <link rel="stylesheet" href="assets/css/tippy.css?nocache=1544" />
   <style>
     .leaflet-popup-content-wrapper {
       background-color: gray;
@@ -123,7 +137,7 @@
           icon: icn
         });
         marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
-        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        marker.bindTooltip("Hideout", {sticky: true, direction: 'top'});
         return marker;
       }
     })
@@ -134,7 +148,7 @@
       pointToLayer: function(feature, latlng) {
         //Create icon for marker
         var icn = L.icon({
-          iconUrl: 'icons/garage.png',
+          iconUrl: 'icons/hideout.png',
           iconSize: [48, 48],
         });
         var marker = L.marker(latlng, {
@@ -152,7 +166,7 @@
       pointToLayer: function(feature, latlng) {
         //Create icon for marker
         var icn = L.icon({
-          iconUrl: 'icons/triathalon.png',
+          iconUrl: 'icons/plantations.png',
           iconSize: [48, 48],
         });
         var marker = L.marker(latlng, {
@@ -206,10 +220,10 @@
     //Create titles for each layer with mini icons to add to the Control
     var overlay = {
       "<img src='icons/safehouse.png'align='center'width='30' height='30'/> Hideout": hideout,
-      "<img src='icons/garage.png'align='center'width='30' height='30'/> Gang HQ": ganghq,
-      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> Plantations": plantations,
+      "<img src='icons/hideout.png'align='center'width='30' height='30'/> Gang HQ": ganghq,
+      "<img src='icons/plantations.png'align='center'width='30' height='30'/> Plantations": plantations,
       "<img src='icons/triathalon.png'align='center'width='30' height='30'/> zones": zones,
-      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> Locations": generallocations,
+      "<img src='icons/locations.png'align='center'width='30' height='30'/> Locations": generallocations,
       "<img src='icons/repairshop.png'align='center'width='30' height='30'/> Chop Shops": chops
     };
     //Create titles for each baselayer to add to the Control
