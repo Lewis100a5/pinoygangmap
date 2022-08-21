@@ -1,0 +1,30 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Jamestown",
+          "imgname":"images/race/stuntplane.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4000, 1450]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Fort Zancudo Plantation",
+          "imgname":"images/race/ratoncanyon.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [1000, 4900]
+        }
+    }
+    ]
+  }
+  

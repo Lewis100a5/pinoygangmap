@@ -110,7 +110,6 @@
     $.getJSON("geojson/hideout.json", function(data) {
       hideout.addData(data);
     });
-
     var ganghq = L.geoJson(null, {
       pointToLayer: function(feature, latlng) {
         //Create icon for marker
@@ -128,7 +127,6 @@
     $.getJSON("geojson/ganghq.json", function(data) {
       ganghq.addData(data);
     });
-
     var plantations = L.geoJson(null, {
       pointToLayer: function(feature, latlng) {
         //Create icon for marker
@@ -138,20 +136,52 @@
         });
         var marker = L.marker(latlng, {
           icon: icn
-        });
+});
         marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
         return marker;
+        
       }
     })
     $.getJSON("geojson/plantations.json", function(data) {
       plantations.addData(data);
+    });
+    var generallocations = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        var circle = L.circle(latlng, {
+          color: "red",
+          fillColor: "#f03",
+          fillOpacity: 0.1,
+          radius: 120.0
+      });
+        return circle;
+      }
+    })
+    $.getJSON("geojson/generallocations.json", function(data) {
+      generallocations.addData(data);
+    });
+
+    var zones = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        var circle = L.circle(latlng, {
+          color: "red",
+          fillColor: "#f03",
+          fillOpacity: 0.1,
+          radius: 100.0
+      });
+        return circle;
+      }
+    })
+    $.getJSON("geojson/plantations.json", function(data) {
+      zones.addData(data);
     });
 
     //Create titles for each layer with mini icons to add to the Control
     var overlay = {
       "<img src='icons/safehouse.png'align='center'width='30' height='30'/> Hideout": hideout,
       "<img src='icons/garage.png'align='center'width='30' height='30'/> Gang HQ": ganghq,
-      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> Plantations": plantations
+      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> Plantations": plantations,
+      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> zones": zones,
+      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> Locations": generallocations
     };
     //Create titles for each baselayer to add to the Control
     var baseLayers = {
@@ -160,12 +190,12 @@
       "Satellite": satellite
 
     }
+    
     //Create Control layer and add to map
     var over = L.control.layers(baseLayers, overlay, {
       collapsed: false,
       sortLayers: true
     }).addTo(map);
-
     //Add GTAV logo to lower left hand corner
     L.Control.Watermark = L.Control.extend({
       onAdd: function(map) {
@@ -198,7 +228,6 @@
         document.getElementById("map").style.background = "#0fa8d2";
       }
     });
-    
   </script>
 </body>
 

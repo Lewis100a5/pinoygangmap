@@ -1,0 +1,17 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Red Parking",
+          "imgname":"images/golf/golf.jpg",
+          "ptype": "Golf"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [3333, 1851.31195335]
+        }
+      }
+    ]
+  }
