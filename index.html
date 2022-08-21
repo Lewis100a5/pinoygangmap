@@ -140,7 +140,7 @@
           icon: icn
 });
         marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
-        marker.bindTooltip( feature.properties.name, {sticky: true, direction: 'top'});
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
         return marker;
         
       }
@@ -155,7 +155,7 @@
           fillColor: "#f03",
           fillOpacity: 0.1,
           radius: 120.0
-      }).bindTooltip('Jamestown', {sticky: true, direction: 'top'});
+      }).bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
 
         return circle;
       }
@@ -167,13 +167,13 @@
     var zones = L.geoJson(null, {
       pointToLayer: function(feature, latlng) {
         var circle = L.circle(latlng, {
-          color: "red",
-          fillColor: "#f03",
+          color: "green",
+          fillColor: "#3f0",
           fillOpacity: 0.1,
           radius: 100.0
 
           
-      }).bindTooltip('Jamestown', {sticky: true, direction: 'top'});
+      }).bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
       return circle;
       
       }
@@ -211,7 +211,7 @@
 
         var img = L.DomUtil.create('img', 'gtav');
         img.src = 'images/PG.png';
-        img.style.width = '500px';
+        img.style.width = '300px';
         return img;
       }
     });
