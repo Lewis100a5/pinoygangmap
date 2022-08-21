@@ -104,6 +104,7 @@
           icon: icn
         });
         marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip('Hideout', {sticky: true, direction: 'top'});
         return marker;
       }
     })
@@ -121,6 +122,7 @@
           icon: icn
         });
         marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip('Gang HQ', {sticky: true, direction: 'top'});
         return marker;
       }
     })
@@ -138,6 +140,7 @@
           icon: icn
 });
         marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip( feature.properties.name, {sticky: true, direction: 'top'});
         return marker;
         
       }
@@ -152,7 +155,8 @@
           fillColor: "#f03",
           fillOpacity: 0.1,
           radius: 120.0
-      });
+      }).bindTooltip('Jamestown', {sticky: true, direction: 'top'});
+
         return circle;
       }
     })
@@ -167,13 +171,18 @@
           fillColor: "#f03",
           fillOpacity: 0.1,
           radius: 100.0
-      });
-        return circle;
+
+          
+      }).bindTooltip('Jamestown', {sticky: true, direction: 'top'});
+      return circle;
+      
       }
     })
     $.getJSON("geojson/plantations.json", function(data) {
       zones.addData(data);
     });
+
+
 
     //Create titles for each layer with mini icons to add to the Control
     var overlay = {
