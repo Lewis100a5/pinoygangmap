@@ -99,14 +99,14 @@
       minZoom: 3,
       noWrap: true,
     }).setView([-35,41], 4);
-    var atlas =   L.tileLayer('https://github.com/Lewis100a5/pinoygangmap/raw/master/assets/maps/maptouse{z}/{x}_{y}.png',{
+    var atlas =   L.tileLayer('/assets/maps/maptouse/{z}/{x}_{y}.png',{
+        attribution:'Map data &copy; ???',
+        tileSize: 256,
+        }).addTo(map);
+    var road =   L.tileLayer('https://github.com/Lewis100a5/pinoygangmap/tree/master/assets/maps/maptouse{z}/{x}_{y}.png',{
         attribution:'Map data &copy; ???',
         tileSize: 256,
         tms: false
-        }).addTo(map);
-        var road =   L.tileLayer('/assets/maps/maptouseroad/{z}/{x}_{y}.png',{
-        attribution:'Map data &copy; ???',
-        tileSize: 256,
         })
         var satellite =   L.tileLayer('/assets/maps/maptousesat/{z}/{x}_{y}.png',{
         attribution:'Map data &copy; ???',
