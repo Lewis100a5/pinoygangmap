@@ -103,7 +103,7 @@
         attribution:'Map data &copy; ???',
         tileSize: 256,
         }).addTo(map);
-    var road =   L.tileLayer('https://github.com/Lewis100a5/pinoygangmap/tree/master/assets/maps/maptouse{z}/{x}_{y}.png',{
+    var road =   L.tileLayer((isLocalHost() ? 'assets/maps/' : 'https://github.com/Lewis100a5/pinoygangmap/tree/master/maptouse') + '/png/{z}/{x}_{y}.png', {
         attribution:'Map data &copy; ???',
         tileSize: 256,
         tms: false
