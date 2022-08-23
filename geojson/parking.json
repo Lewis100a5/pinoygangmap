@@ -1,0 +1,18 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "City  Parking",
+          "imgname":"images/hangerhelipad/sandyshores.jpg",
+          "ptype": "Hanger/Helipad"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [30.497908885981957, -47.274328002100894]
+        }
+      }
+    ]
+  }
+  

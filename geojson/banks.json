@@ -1,0 +1,78 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Main Bank",
+          "imgname":"images/race/stuntplane.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [30.63036744255867, -42.0234375]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Route 68 Bank",
+          "imgname":"images/race/ratoncanyon.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [35.46628739788103, -29.294033765792847]
+        }
+    },
+    {
+        "type": "Feature",
+        "properties": {
+          "name": "Chumash / Great Ocean Highway Bank",
+          "imgname":"images/race/ratoncanyon.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [14.059462716667781, -40.968040347099304]
+        }
+    },
+    {
+        "type": "Feature",
+        "properties": {
+          "name": "LSC Bank",
+          "imgname":"images/race/ratoncanyon.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [27.621968914483197, -43.422585010528564]
+        }
+    },
+    {
+        "type": "Feature",
+        "properties": {
+          "name": "Pink Cage/Hawick Bank",
+          "imgname":"images/race/ratoncanyon.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [30.96054354082282, -44.61008548736572]
+        }
+    },
+    {
+        "type": "Feature",
+        "properties": {
+          "name": "Paleto Bank",
+          "imgname":"images/race/ratoncanyon.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [28.7319438002915, -9.894886493682861]
+        }
+    }
+    ]
+  }
+  

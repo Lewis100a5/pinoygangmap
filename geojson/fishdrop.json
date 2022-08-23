@@ -1,0 +1,18 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Fish Sell Point",
+          "imgname":"images/hangerhelipad/sandyshores.jpg",
+          "ptype": "Hanger/Helipad"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [23.925960553814882, -50.38720545191456]
+        }
+      }
+    ]
+  }
+  

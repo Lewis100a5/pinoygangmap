@@ -24,7 +24,32 @@
           "type": "Point",
           "coordinates": [34.848416, -55.675128]
         }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DOC Lab",
+        "imgname":"images/race/ratoncanyon.jpg",
+        "ptype": "Race"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.03953159570298, -31.25284171104431]
+      }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Elysian Lab",
+      "imgname":"images/race/ratoncanyon.jpg",
+      "ptype": "Race"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [27.68868349835577, -55.82670497894287]
     }
+}
+  
     ]
   }
   

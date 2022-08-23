@@ -114,7 +114,7 @@
     //map.fitBounds(bounds);
     //map.setMaxBounds(bounds);
     function onMapClick(e) {
-    alert("You clicked the map at " + e.latlng);
+    alert("You clicked the map at " + e.latlng.lng + ", " + e.latlng.lat);
 }
 
 map.on('click', onMapClick);
@@ -239,7 +239,7 @@ const southWest = L.latLng(-75.394184, -10.173922),
       pointToLayer: function(feature, latlng) {
         //Create icon for marker
         var icn = L.icon({
-          iconUrl: 'icons/barbershop.png',
+          iconUrl: 'icons/labs.png',
           iconSize: [30, 30],
         });
         var marker = L.marker(latlng, {
@@ -254,7 +254,63 @@ const southWest = L.latLng(-75.394184, -10.173922),
       labs.addData(data);
     });
 
+    var banks = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/bank.png',
+          iconSize: [30, 30],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/banks.json", function(data) {
+      banks.addData(data);
+    });
 
+
+    var parking = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/garage.png',
+          iconSize: [30, 30],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/parking.json", function(data) {
+      parking.addData(data);
+    });
+
+    var fishdrop = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/fishdrop.png',
+          iconSize: [30, 30],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/fishdrop.json", function(data) {
+      fishdrop.addData(data);
+    });
 
     //Create titles for each layer with mini icons to add to the Control
     var overlay = {
@@ -264,7 +320,10 @@ const southWest = L.latLng(-75.394184, -10.173922),
       "<img src='icons/triathalon.png'align='center'width='30' height='30'/> zones": zones,
       "<img src='icons/locations.png'align='center'width='30' height='30'/> Locations": generallocations,
       "<img src='icons/repairshop.png'align='center'width='30' height='30'/> Chop Shops": chops,
-      "<img src='icons/repairshop.png'align='center'width='30' height='30'/> Labs": labs
+      "<img src='icons/labs.png'align='center'width='30' height='30'/> Labs": labs,
+      "<img src='icons/bank.png'align='center'width='30' height='30'/> Banks": banks,
+      "<img src='icons/garage.png'align='center'width='30' height='30'/> Parking": parking,
+      "<img src='icons/fishdrop.png'align='center'width='30' height='30'/> Fish Drop Off": fishdrop
 
     };
     //Create titles for each baselayer to add to the Control
