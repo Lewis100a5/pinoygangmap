@@ -312,6 +312,65 @@ const southWest = L.latLng(-75.394184, -10.173922),
       fishdrop.addData(data);
     });
 
+    var barber = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/barbershop.png',
+          iconSize: [30, 30],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/barbers.json", function(data) {
+      barber.addData(data);
+    });
+
+    var clothing = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/clothingstore.png',
+          iconSize: [30, 30],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/clothingshop.json", function(data) {
+      clothing.addData(data);
+    });
+
+    var tattoo = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/tattoparlor.png',
+          iconSize: [30, 30],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/tattoo.json", function(data) {
+      tattoo.addData(data);
+    });
+
+    
+
     //Create titles for each layer with mini icons to add to the Control
     var overlay = {
       "<img src='icons/safehouse.png'align='center'width='30' height='30'/> Hideout": hideout,
@@ -323,7 +382,10 @@ const southWest = L.latLng(-75.394184, -10.173922),
       "<img src='icons/labs.png'align='center'width='30' height='30'/> Labs": labs,
       "<img src='icons/bank.png'align='center'width='30' height='30'/> Banks": banks,
       "<img src='icons/garage.png'align='center'width='30' height='30'/> Parking": parking,
-      "<img src='icons/fishdrop.png'align='center'width='30' height='30'/> Fish Drop Off": fishdrop
+      "<img src='icons/fishdrop.png'align='center'width='30' height='30'/> Fish Drop Off": fishdrop,
+      "<img src='icons/tattooparlor.png'align='center'width='30' height='30'/> Tattoo Parlors": tattoo,
+      "<img src='icons/clothingstore.png'align='center'width='30' height='30'/> Clothing Stores": clothing,
+      "<img src='icons/barbershop.png'align='center'width='30' height='30'/> Barber Shops": barber
 
     };
     //Create titles for each baselayer to add to the Control
