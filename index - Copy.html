@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="60x60" href="./pgicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./pgicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./pgicon.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#000000">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-config" content="./browserconfig.xml">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="assets/css/leaflet.css" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css?nocache=1544" />
+  <link rel="stylesheet" href="assets/css/tippy.css?nocache=1544" />
+  <style>
+    .leaflet-popup-content-wrapper {
+      background-color: gray;
+    }
+
+    .leaflet-control-layers-expanded {
+      background-color: #2da0e2;
+          padding: 6px 10px 6px 6px;
+      background-size: 100%;
+      background-image: url("images/x.png");
+      transition-property: opacity;
+      transition-duration: 1s;
+      opacity: 70%;
+    }
+
+    .leaflet-control-layers-expanded:hover {
+      opacity: 100%;
+    }
+
+    .leaflet-popup-tip {
+      background-color: gray;
+      opacity: 0%;
+
+    }
+
+    .leaflet-popup-close-button {
+      background-color: gray;
+      opacity: 0%;
+    }
+
+    .popupImage {
+      max-width: 100%;
+      max-height: 100%;
+
+    }
+
+    .popupImage:hover {
+      transform: scale(3);
+      opacity: 1 !important;
+      border-style: solid;
+      border-color: gray;
+      border-width: 2px;
+      z-index: 1000 !important;
+    }
+
+    .gtav {
+      margin: 0 auto;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body,
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<title>GTA V Noob</title>
+
+<body style="background-color:#0fa8d2">
+  <div id="map" style="width: 100%; height: 100%;background-color:#0fa8d2;">
+  </div>
+  <script>
+    //Initialize Leaflet map
+    var map = L.map('map', {
+      crs: L.CRS.Simple,
+      minZoom: -3,
+      maxBoundsViscosity: 1.0
+    });
+    var bounds = [
+      [0, 0],
+      [8192, 8192]
+    ];
+    //Initialize each base layer
+    var atlas = L.imageOverlay('images/gtav.png', bounds).addTo(map);
+    var satellite = L.imageOverlay('images/GTAV_SATELLITE_8192x8192.png', bounds)
+    var road = L.imageOverlay('images/GTAV_ROADMAP_8192x8192.png', bounds)
+    map.fitBounds(bounds);
+    map.setMaxBounds(bounds)
+  
+    // Load each layer from it's corresponding GeoJSON file
+    var chops = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/repairshop.png',
+          iconSize: [48, 48],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/chops.json", function(data) {
+      chops.addData(data);
+    });
+
+    var hideout = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/safehouse.png',
+          iconSize: [48, 48],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip("Hideout", {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/hideout.json", function(data) {
+      hideout.addData(data);
+    });
+    var ganghq = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/hideout.png',
+          iconSize: [48, 48],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+        });
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip('Gang HQ', {sticky: true, direction: 'top'});
+        return marker;
+      }
+    })
+    $.getJSON("geojson/ganghq.json", function(data) {
+      ganghq.addData(data);
+    });
+    var plantations = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        //Create icon for marker
+        var icn = L.icon({
+          iconUrl: 'icons/plantations.png',
+          iconSize: [48, 48],
+        });
+        var marker = L.marker(latlng, {
+          icon: icn
+});
+        marker.bindPopup("<font color=white><h4>" + feature.properties.name + '</h4>' + "<img src='" + feature.properties.imgname + "' class='popupImage'></font>");
+        marker.bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+        return marker;
+        
+      }
+    })
+    $.getJSON("geojson/plantations.json", function(data) {
+      plantations.addData(data);
+    });
+    var generallocations = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        var circle = L.circle(latlng, {
+          color: "red",
+          fillColor: "#f03",
+          fillOpacity: 0.1,
+          radius: 120.0
+      }).bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+
+        return circle;
+      }
+    })
+    $.getJSON("geojson/generallocations.json", function(data) {
+      generallocations.addData(data);
+    });
+
+    var zones = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        var circle = L.circle(latlng, {
+          color: "green",
+          fillColor: "#3f0",
+          fillOpacity: 0.1,
+          radius: 100.0
+
+          
+      }).bindTooltip(feature.properties.name, {sticky: true, direction: 'top'});
+      return circle;
+      
+      }
+    })
+    $.getJSON("geojson/plantations.json", function(data) {
+      zones.addData(data);
+    });
+
+
+
+    //Create titles for each layer with mini icons to add to the Control
+    var overlay = {
+      "<img src='icons/safehouse.png'align='center'width='30' height='30'/> Hideout": hideout,
+      "<img src='icons/hideout.png'align='center'width='30' height='30'/> Gang HQ": ganghq,
+      "<img src='icons/plantations.png'align='center'width='30' height='30'/> Plantations": plantations,
+      "<img src='icons/triathalon.png'align='center'width='30' height='30'/> zones": zones,
+      "<img src='icons/locations.png'align='center'width='30' height='30'/> Locations": generallocations,
+      "<img src='icons/repairshop.png'align='center'width='30' height='30'/> Chop Shops": chops
+    };
+    //Create titles for each baselayer to add to the Control
+    var baseLayers = {
+      "Atlas": atlas,
+      "Road": road,
+      "Satellite": satellite
+
+    }
+    
+    //Create Control layer and add to map
+    var over = L.control.layers(baseLayers, overlay, {
+      collapsed: false,
+      sortLayers: true
+    }).addTo(map);
+    //Add GTAV logo to lower left hand corner
+    L.Control.Watermark = L.Control.extend({
+      onAdd: function(map) {
+
+        var img = L.DomUtil.create('img', 'gtav');
+        img.src = 'images/PG.png';
+        img.style.width = '300px';
+        return img;
+      }
+    });
+    L.control.watermark = function(opts) {
+      return new L.Control.Watermark(opts);
+    }
+    //Add logo to map
+    L.control.watermark({
+      position: 'bottomleft'
+    }).addTo(map);
+
+
+    //When the map's base layer is changed, change the color of the background
+    //to match the map
+    map.on('baselayerchange', function(layer) {
+      if (layer.name == "Road") {
+        document.getElementById("map").style.background = "#1862ad";
+      }
+      if (layer.name == "Satellite") {
+        document.getElementById("map").style.background = "#143d6b";
+      }
+      if (layer.name == "Atlas") {
+        document.getElementById("map").style.background = "#0fa8d2";
+      }
+    });
+  </script>
+</body>
+
+</html>

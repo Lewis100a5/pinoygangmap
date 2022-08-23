@@ -1,0 +1,30 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Chatterbox",
+          "imgname":"images/race/stuntplane.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [41.928128, -17.503606]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Container",
+          "imgname":"images/race/ratoncanyon.jpg",
+          "ptype": "Race"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [34.848416, -55.675128]
+        }
+    }
+    ]
+  }
+  
